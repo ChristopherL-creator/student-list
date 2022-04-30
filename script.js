@@ -199,74 +199,78 @@ writeStudentsDocument(studenti);
 
 // solo ragazze; 
 
-function writeFemaleDocument(studenti) {
-  const femaleContainer = document.getElementById("female-container"); 
+const femaleArray = studenti.filter(function(studente){ 
+  return studente.genere === 'femmina';
+}); 
 
-  // for (let i = 0; i < studenti.length; i++) { 
-  //   const studente = studenti[i]; 
+console.log(femaleArray); 
+
+function writeFemaleDocument(femaleArray) {
+  const femaleContainer = document.getElementById("female-container");
+
+  for (let i = 0; i < femaleArray.length; i++) {
+    const studente = femaleArray[i];
+
+    const p = document.createElement("p");
+
+    const nome = document.createTextNode(studente.nome);
+
+    const br = document.createElement("br");
+
+    p.appendChild(nome);
+
+    const cognome = document.createTextNode(' ' + studente.cognome + ';');
+
+    p.appendChild(cognome); 
     
-  //   const p = document.createElement("p"); 
+    p.appendChild(br);
 
-  //   const nome = document.createTextNode(studente.nome);
+    const genere = document.createTextNode('genere: ' + studente.genere + ';'); 
 
-  //   const br = document.createElement("br");
+    const br2 = document.createElement("br");
 
-  //   p.appendChild(nome);
+    p.appendChild(genere); 
 
-  //   const cognome = document.createTextNode(' ' + studente.cognome + ';');
+    p.appendChild(br2);
 
-  //   p.appendChild(cognome); 
-    
-  //   p.appendChild(br);
+    const eta = document.createTextNode('età: ' + studente.eta + ';'); 
 
-  //   const genere = document.createTextNode('genere: ' + studente.genere + ';'); 
+    const br3 = document.createElement("br");
 
-  //   const br2 = document.createElement("br");
+    p.appendChild(eta); 
 
-  //   p.appendChild(genere); 
+    p.appendChild(br3); 
 
-  //   p.appendChild(br2);
+    const città = document.createTextNode('città: ' + studente.citta + ';'); 
 
-  //   const eta = document.createTextNode('età: ' + studente.eta + ';'); 
+    const br4 = document.createElement("br");
 
-  //   const br3 = document.createElement("br");
+    p.appendChild(città); 
 
-  //   p.appendChild(eta); 
+    p.appendChild(br4);
 
-  //   p.appendChild(br3); 
+    const sposato = document.createTextNode('sposato: ' + studente.sposato + ';'); 
 
-  //   const città = document.createTextNode('città: ' + studente.citta + ';'); 
+    const br5 = document.createElement("br");
 
-  //   const br4 = document.createElement("br");
+    p.appendChild(sposato); 
 
-  //   p.appendChild(città); 
+    p.appendChild(br5); 
 
-  //   p.appendChild(br4);
+    const corso = document.createTextNode('corso: ' + JSON.stringify(studente.corso.nome) + ';'); 
 
-  //   const sposato = document.createTextNode('sposato: ' + studente.sposato + ';'); 
+    const br6 = document.createElement("br");
 
-  //   const br5 = document.createElement("br");
+    p.appendChild(corso); 
 
-  //   p.appendChild(sposato); 
+    p.appendChild(br6);
 
-  //   p.appendChild(br5); 
+    femaleContainer.appendChild(p); 
 
-  //   const corso = document.createTextNode('corso: ' + JSON.stringify(studente.corso.nome) + ';'); 
-
-  //   const br6 = document.createElement("br");
-
-  //   p.appendChild(corso); 
-
-  //   p.appendChild(br6);
-
-  //   femaleContainer.appendChild(p); 
-
-  // } 
-
-  const IsFemale = studenti.filter( => v.name === "Joe" && v.age < 30);
+  }
 }
 
-writeFemaleDocument(studenti);
+writeFemaleDocument(femaleArray);
 
 // solo ragazzi
 
