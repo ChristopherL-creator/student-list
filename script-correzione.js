@@ -133,17 +133,21 @@ const studenti = [
 function showStudents() {
   const studContainer = document.getElementById("studenti-container"); 
 
-  studContainer.innerHTML = ' ';
+  studContainer.innerHTML = ' '; 
 
+//  ordina studenti in elenco non ordinato;
   for (const studente of studenti) {
-    const li = document.createElement("li");
-    const br = document.createElement("br");
+    const li = document.createElement("li"); 
+//  imposto elemento lista "li" per ciascuna voce;
+    const br = document.createElement("br"); 
+//  lo stesso per br; li metto all'inizio perché valgono per tutte le voci;
 
-    const nameDiv = document.createElement("div");
-    const nameNode = document.createTextNode(
-      studente.nome + " " + studente.cognome
-    );
+    const nameDiv = document.createElement("div"); 
+//  creo div contenitore voce;
+    const nameNode = document.createTextNode(studente.nome + " " + studente.cognome);
+//  creo testo da inserire in div;
     nameDiv.appendChild(nameNode);
+//  inserisco testo "nameNode" in div "nameDiv"; ripeto per ogni voce,
 
     const ageDiv = document.createElement("div");
     const ageNode = document.createTextNode("età: " + studente.eta);
@@ -157,8 +161,10 @@ function showStudents() {
     li.appendChild(ageDiv);
     li.appendChild(corsoDiv);
     li.appendChild(br);
+//  assegno ogni div contenitore, e br, a elemento lista li;
 
     studContainer.appendChild(li);
+//  assegno elemento lista li a contenitore; 
 
   }
 }
